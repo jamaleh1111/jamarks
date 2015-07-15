@@ -13,19 +13,19 @@
 
   - if flash[:notice] 
     .alert alert-success
-      %button.close{"data-dismiss" => "alert", :type => "button"}x
-      = flash[:notice]
+    %button.close{"data-dismiss" => "alert", :type => "button"}x
+    = flash[:notice]
 
   - elsif flash[:error]
     .alert alert-danger
-      %button.close{"data-dismiss" => "alert", :type => "button"}x
-      = flash[:error]
+    %button.close{"data-dismiss" => "alert", :type => "button"}x
+    = flash[:error]
 
   -elsif flash[:alert]
     .alert alert-warning
-      %button.close{"data-dismiss" => "alert", :type => "button"}x
-      = flash[:alert]
-      
+    %button.close{"data-dismiss" => "alert", :type => "button"}x
+    = flash[:alert]
+    
     .class 
 
 = yield 
