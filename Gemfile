@@ -53,3 +53,5 @@ end
 gem 'haml', '~> 4.0.5'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'figaro', '1.0'
+
