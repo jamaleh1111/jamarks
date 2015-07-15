@@ -51,3 +51,4 @@ group :development, :test do
 end
 
 gem 'haml', '~> 4.0.5'
+gem 'bootstrap-sass'
