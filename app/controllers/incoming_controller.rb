@@ -13,15 +13,12 @@ class IncomingController < ApplicationController
   def create
     @user = User.where(email: params['sender']).first
     @topic = Topic.where(name: params[:subject]).first_or_create
-    url = params["body-plain"]
-    #assign the url to a variable after retreiving it from params["body-plain"]
-
-    #check if the user is nil, if so, create and save a new user
-    if @user
-     @topic.bookmarks.create(user: params['stripped-tet'], user_id @user.id)
-    end 
     
-    head 200 # what is this?
+    if @user
+     @topic.bookmarks.create(user: params['stripped-text'], user_id @user.id)
+    end 
+
+    head 200 
   end 
 
 
