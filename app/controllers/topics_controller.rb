@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
+    @bookmark = @topic.bookmark
   end
 
   def show
@@ -28,7 +29,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    if @topic.update_attributes(params.require(:topic).permit(:title))
+    if @topic.update_attributes( topic_params )
       flash[:notice] = "Topic was updated."
       redirect_to @topic
     else 
@@ -47,5 +48,11 @@ class TopicsController < ApplicationController
       flash[:error] = "Oops!  There was an error deleting the topic. Please try again!"
       render :show
     end 
+  end 
+
+  private
+
+  def topic_params
+    params.require(:topic).permit(:title)
   end 
 end
