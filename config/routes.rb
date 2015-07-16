@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
-  # get 'incoming/index'
 
-  # get 'incoming/show'
-
-  # get 'incoming/new'
-
-  # get 'incoming/edit'
 
   devise_for :users
+  resources :topics
+
   get 'welcome/index'
 
-  get 'welcome/about'
+  get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
 
