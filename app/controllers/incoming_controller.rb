@@ -11,21 +11,29 @@ class IncomingController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @topic = Topic.find(params[:topic_id])
+    @user = User.find(params[:sender])
+    @topic = Topic.find(params[:subject])
+    url = params["body-plain"]
     #assign the url to a variable after retreiving it from params["body-plain"]
 
     #check if the user is nil, if so, create and save a new user
-    if @user == nil 
-      @user = User.new(params[:id])
+    if @user.nil? 
+      @user = User.new(:sender)
       @user.save
     #check if the topic is nil, if so, create and save a new topic
-    elsif @topic == nil
+    elsif @topic.nil?
       @topic = current_user.topic.build(topic_params)
       @topic.save
    
     #now that youre sure you have a valid user and topic, build and save a new bookmark
-
+    else 
+      @bookmark = topic.bookmark.build(bookmark_params)
+      if @bookmark.save
+        flash[:notice] = "Bookmark was saved."
+        redirect_to @bookmark
+      else
+        flash[:error] = "There was an error saving the post.  Please try again."
+        render :incoming #where do i want to go?
     head 200 # what is this?
   end 
 
