@@ -15,7 +15,7 @@ class IncomingController < ApplicationController
     @topic = Topic.where(name: params[:subject]).first_or_create
     
     if @user
-     @topic.bookmarks.create(user: params['stripped-text'], user_id @user.id)
+     @topic.bookmarks.create(url: params['stripped-text'], user_id: @user.id)
     end 
 
     head 200 
