@@ -4,14 +4,33 @@ class IncomingController < ApplicationController
 
   def create
 
-    puts "*" * 10 
-    puts params.inspect
-    @user = User.where(email: params[:sender]).first
-    @topic = Topic.where(title: params[:subject]).first_or_create # subject
-    
+    @user = User.where(email: params['sender']).first
     if @user
-     @topic.bookmarks.create(url: params["body-plain"], user_id: @user.id) # body of email
+      puts "we have user"
+    else
+      puts "no user"
+    end
+
+    @topic = Topic.where(title: params[:subject]).first_or_create # subject
+
+    if @topic
+      puts "we have topic"
+    else
+      puts "no topic"
+    end
+
+    if @user
+      puts "about to create bookmark"
+     @bookmark = @topic.bookmarks.create(url: params["body-plain"], user_id: @user.id) # body of email
+    
     end 
+    if @bookmark
+      puts "created bookmark #{@bookmark.url}"
+    else
+      puts "no bookmark created"
+    end
+
+
 
     head 200 
   end 
