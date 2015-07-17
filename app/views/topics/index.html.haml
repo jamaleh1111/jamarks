@@ -1,4 +1,8 @@
 %h1 Jamarks
+
+- if policy(Bookmark.new).create?
+  = link_to "New Bookmark", new_topic_bookmark_path, class: 'btn btn-success'
+  
 - @topics.each do |topic|
   %p= link_to topic.title, topic
   
