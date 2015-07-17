@@ -11,14 +11,14 @@ ActionMailer::Base.delivery_method = :smtp
 
 ActionMailer::Base.raise_delivery_errors = true
 
-class DevelopmentMailInterceptor
-  def self.delivering_email(message)
-    message.to = jamaleh@hotmail.com #is this correct?  just my email to test locally? 
-    message.cc = nil
-    message.bcc = nil
-  end 
-end 
+# class DevelopmentMailInterceptor
+#   def self.delivering_email(message)
+#     message.to = jamaleh@hotmail.com #is this correct?  just my email to test locally? 
+#     message.cc = nil
+#     message.bcc = nil
+#   end 
+# end 
 
-if Rails.env.development?
-  ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
-end 
+# if Rails.env.development?
+#   ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
+# end 

@@ -38,11 +38,12 @@ class BookmarksController < ApplicationController
 
     if @bookmark.update_attributes( bookmark_params )
       flash[:notice] = "Bookmark was updated."
-      redirect_to [@topic, @post]
+      redirect_to @bookmark
     else
       flash[:error] = "There was an error updating your bookmark, please try again."
       render :edit
     end 
+  end 
 
     def destroy
       @topic = Topic.find(params[:topic_id])
