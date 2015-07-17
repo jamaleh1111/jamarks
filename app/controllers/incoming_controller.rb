@@ -1,14 +1,6 @@
 class IncomingController < ApplicationController
 
   skip_before_action :verify_authenticity_token, only: [:create]
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
 
   def create
     @user = User.where(email: params['sender']).first
@@ -20,16 +12,6 @@ class IncomingController < ApplicationController
 
     head 200 
   end 
-
-
-
-  def edit
-  end
-
-  private 
-
-  def topic_params
-    params.require(:topic).permit(:title, :user)
 end
 
 
