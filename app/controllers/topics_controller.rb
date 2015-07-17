@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
-    @bookmark = @topic.bookmark
+    #@bookmark = @topic.bookmark
   end
 
   def show

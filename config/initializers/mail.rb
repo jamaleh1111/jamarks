@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
   address:          'smtp.mailgun.org',
   user_name:        ENV['MAILGUN_SMTP_LOGIN'],
   password:         ENV['MAILGUN_SMTP_PASSWORD'],
-  domain:           'jamark-herokuapp.com',  #is this right?  this is for production?
+  domain:           'app5ceddcb1967e427792dde6d69efc3f1c.mailgun.org',  #is this right?  this is for production?
   authentication:   :plain,
   content_type:     'text/html'
 }
