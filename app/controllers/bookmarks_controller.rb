@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @bookmark = current_user.bookmarks.build( bookmark_params )
+    @bookmark = Bookmark.new(bookmark_params)
     @bookmark.topic = @topic
     authorize @bookmark
 
@@ -45,18 +45,18 @@ class BookmarksController < ApplicationController
     end 
   end 
 
-    def destroy
-      @topic = Topic.find(params[:topic_id])
-      @bookmark = Bookmark.find(params[:id])
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = Bookmark.find(params[:id])
 
-      if @bookmark.destroy
-        flash[:notice] = "Your bookmark was deleted!"
-        redirect_to @topic
-      else
-        flash[:error] = "Oh no, please try deleting that bookmark again!"
-        render :show
-      end 
-    end
+    if @bookmark.destroy
+      flash[:notice] = "Your bookmark was deleted!"
+      redirect_to @topic
+    else
+      flash[:error] = "Oh no, please try deleting that bookmark again!"
+      render :show
+    end 
+  end
 
   private 
 
