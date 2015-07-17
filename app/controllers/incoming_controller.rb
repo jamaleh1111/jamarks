@@ -3,11 +3,14 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    @user = User.where(email: params['sender']).first
-    @topic = Topic.where(title: params['body-plain']).first_or_create
+
+    puts "*" * 10 
+    puts params.inspect
+    @user = User.where(email: params[:sender]).first
+    @topic = Topic.where(title: params[:subject]).first_or_create # subject
     
     if @user
-     @topic.bookmarks.create(url: params['stripped-text'], user_id: @user.id)
+     @topic.bookmarks.create(url: params["body-plain"], user_id: @user.id) # body of email
     end 
 
     head 200 
