@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
       role == 'admin'
     end 
 
-    def liked(post)
-      likes.where(bookmark_id: bookmark.id).first
-    end 
+    # def liked(bookmark)
+    #   likes.where(bookmark_id: bookmark.id).first
+    # end 
 end

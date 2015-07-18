@@ -8,7 +8,5 @@
 
   = link_to "Delete", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' }
 
-- @bookmarks.each do |bookmark|
-  = link_to bookmark.url
 
   = render partial: 'likes/like', locals: { bookmark: @bookmark }
