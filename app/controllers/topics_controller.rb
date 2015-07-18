@@ -1,11 +1,12 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
-    @bookmarks = topic_id.bookmarks
   end
 
   def show
     @topic = Topic.find(params[:id])
+    @bookmarks = @topics.bookmarks
+
   end
 
   def new

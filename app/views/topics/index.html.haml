@@ -10,3 +10,5 @@
 
 - @bookmarks.each do |bookmark|
   = link_to bookmark.url
+
+  = render partial: 'likes/like', locals: { bookmark: @bookmark }
