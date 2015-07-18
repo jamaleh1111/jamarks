@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
 
     has_many :topics
     has_many :likes, dependent: :destroy
+    has_many :bookmarks
 
     def admin?
       role == 'admin'
     end 
 
-    def liked(bookmark)
-      likes.where(bookmark_id: bookmark.id).first
-    end 
+    # def liked(bookmark)
+    #   likes.where(bookmark_id: bookmark.id).first
+    # end 
 end
