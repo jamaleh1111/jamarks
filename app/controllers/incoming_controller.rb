@@ -4,12 +4,12 @@ class IncomingController < ApplicationController
 
   def create
 
-    @user = User.where(email: params['sender']).first
+    @user = User.where(email: params[:sender]).first
 
     @topic = Topic.where(title: params[:subject]).first_or_create # subject
 
     if @user
-     @bookmark = @topic.bookmarks.create(url: params['stripped-text'], user_id: @user.id) # body of email
+     @bookmark = @topic.bookmarks.create(url: params["body-plain"], user_id: @user.id) # body of email
     
     end 
 
