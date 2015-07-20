@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
     has_many :topics
     # has_many :likes, dependent: :destroy
-    # has_many :bookmarks
+    has_many :bookmarks
 
     def admin?
       role == 'admin'
