@@ -7,7 +7,6 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @bookmarks = @topic.bookmarks
-    # show bookmarks associated with it
   end
 
   def new
