@@ -4,7 +4,7 @@
 
 %p
   - @bookmarks.each do |bookmark|
-    = link_to bookmark.url
+    %p= link_to bookmark.url
 
-    = link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger'
+    = link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger'
  
