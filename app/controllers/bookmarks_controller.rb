@@ -1,14 +1,26 @@
 class BookmarksController < ApplicationController
   def show
-    
+    @topic = Topic.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def new
-    
+    @topic = Topic.find(params[:id])
+    @bookmark = Bookmark.new
   end
 
   def create
-   
+    @topic = topic.find(params[:topic_id])
+    @bookmark = current_user.bookmarks.build(bookmark_params)
+    @bookmark.topic = @topic
+
+    if @bookmark.save
+      flash[:notice] = "Bookmark was saved."
+      redirect_to [@topic, @bookmark]
+    else 
+      flash[:error] = "There was an error, please try again."
+      render :new
+    end 
   end 
 
   def edit
@@ -20,8 +32,23 @@ class BookmarksController < ApplicationController
   end 
 
   def destroy
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = Bookmark.find(params[:id])
+
+    if @bookmark.destroy
+      flash[:notice] = "Bookmark was deleted!"
+      redirect_to @topic
+    else
+      flash[:error] = "There was an error, please try again."
+      render :show
+    end 
+  end 
     
-  end
+  private 
+
+  def bookmark_params
+    params.require(:bookmark).permit(:url)
+  end 
 
   
 
