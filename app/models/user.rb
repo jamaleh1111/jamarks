@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :bookmarks # dependent destroy?
 
-  def admin?
-    role == 'admin'
-  end 
+  # def admin?
+  #   role == 'admin'
+  # end 
 
   def liked(bookmark)
     likes.where(bookmark_id: bookmark.id).first

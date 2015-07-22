@@ -50,6 +50,11 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'binding_of_caller'
+  gem 'better_errors'
+end 
+
 gem 'haml', '~> 4.0.5'
 gem 'bootstrap-sass'
 gem 'devise'
