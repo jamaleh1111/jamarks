@@ -7,6 +7,8 @@
   - @bookmarks.each do |bookmark|
     %p= link_to bookmark.url
 
+    = render partial: 'likes/like', locals: {bookmark: @bookmark }
+
     -if policy(bookmark).destroy?
       = link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger'
  
