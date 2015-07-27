@@ -3,6 +3,8 @@
 - if policy(Bookmark.new).create?
   = link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success'
 
+/ = render partial: 'likes/like', locals: {bookmark: @bookmark}
+
 %p
   - @bookmarks.each do |bookmark|
     %p= link_to bookmark.url, bookmark.url, class: "social-btn"
@@ -10,5 +12,4 @@
     -if policy(bookmark).destroy?
       = link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger'
       
-    = render partial: 'likes/like', locals: {bookmark: @bookmark }
 

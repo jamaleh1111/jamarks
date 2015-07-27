@@ -1,21 +1,18 @@
-<!-- %h1= @user.name
+%h1= @user.name
 
-%h2 Topics
-- @topics.each do |topic|
-  = @topic.title
 
-%p- @bookmarks.each do |bookmark|
-  = link_to @bookmark.url -->
-
-  
 - if policy(Bookmark.new).create?
   = link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success'
 
-%p
-  - @bookmarks.each do |bookmark|
-    %p= link_to bookmark.url
+%h2 Topics
+  - @topics.each do |topic|
+    = topic.title
 
-    = render partial: 'likes/like', locals: {bookmark: @bookmark }
+%p
+  - @user_bookmarks.each do |bookmark|
+    %p= link_to bookmark.url, bookmark.url
+
+    / = render partial: 'likes/like', locals: {bookmark: @bookmark }
 
     -if policy(bookmark).destroy?
       = link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger'
