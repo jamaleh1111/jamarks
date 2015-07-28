@@ -20,7 +20,7 @@ class LikesController < ApplicationController
 
     authorize like
     if like.destroy
-      flash[:notice] = "You have deleted this bookmark."
+      flash[:notice] = "You don't like this bookmark anymore."
     else
       flash[:error] = "There was an error, please try again."
     end 
