@@ -7,8 +7,11 @@ Rails.application.routes.draw do
 
   resources :topics do 
     resources :bookmarks, except: [:index]
-    resources :likes, only: [:create, :destroy]
   end 
+
+  resources :bookmarks do
+    resources :likes, only: [:create, :destroy]
+  end
 
 
 

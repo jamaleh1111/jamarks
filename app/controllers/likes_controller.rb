@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     else
       flash[:error] = "There was an error, please try again."
     end
-    redirect_to @bookmark
+    redirect_to @bookmark.topic
   end 
 
   def destroy
@@ -24,6 +24,6 @@ class LikesController < ApplicationController
     else
       flash[:error] = "There was an error, please try again."
     end 
-    redirect_to @bookmark
+    redirect_to @bookmark.topic
   end 
 end
