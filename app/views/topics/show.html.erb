@@ -1,0 +1,17 @@
+<% if policy(Bookmark.new).create? %>
+  <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
+<% end %>
+
+<h1><%= @topic.title %></h1>
+
+
+<% @topic.bookmarks.each do |bookmark| %>
+  <div class="col-xs-6 col-md-3">
+    <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+  </div>
+  <div class="likes">
+    <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+  </div>
+<% end %>
+
+    

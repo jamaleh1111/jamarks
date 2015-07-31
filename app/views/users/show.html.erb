@@ -1,0 +1,39 @@
+<h1>
+  <%= @user.name %>
+</h1>
+<!-- - if policy(Bookmark.new).create?
+-->
+<!--   = link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success'
+-->
+<h2>My Bookmarks</h2>
+  <p>
+    <% @topics.each do |topic| %>
+      <%= topic.title %>
+    <% end %>
+  </p>
+  <p>
+    <% @user_bookmarks.each do |bookmark| %>
+      <p>
+        <%= link_to bookmark.url, bookmark.url %>
+      </p>
+      <% if policy(bookmark).destroy? %>
+        <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+    <% end %>
+  </p>
+
+<h2>My Liked Bookmarks</h2>
+  <p>
+    <% @topics.each do |topic| %>
+      <%= topic.title %>
+    <% end %>
+  </p>
+  <p>
+    <% @liked_bookmarks.each do |bookmark| %>
+      <p>
+        <%= link_to bookmark.url, bookmark.url %>
+      </p>
+      <%= render partial: 'likes/like', locals: {bookmark: bookmark } %>
+    <% end %>
+  </p>
+

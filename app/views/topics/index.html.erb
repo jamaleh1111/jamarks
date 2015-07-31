@@ -1,24 +1,18 @@
 <div class="container">
 <h1>Jamarks</h1>
-<h2>
   <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
   
-</h2>
-<div class="row">
-  <% @topics.each do |topic| %>
-    <p>
-      <%= link_to topic.title, topic %>
-    </p>
-    <%= link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger' %>
-    <% topic.bookmarks.each do |bookmark| %>
-   
+  
+    <% @topics.each do |topic| %>
+      <p><%= link_to topic.title, topic %></p>
+        <%= link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger' %>
+        <div class="row">
+        <% topic.bookmarks.each do |bookmark| %>
           <div class="col-xs-6 col-md-3">
-    <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-  </div>
-
+            <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+          </div>
+        <% end %>
     <% end %>
-  <% end %>
+  </div>
+</div>
 
-</div>
-</div>
-<script src='//cdn.embedly.com/widgets/platform.js'></script>
