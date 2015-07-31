@@ -17,6 +17,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ 
+ body {
+   background: #d6ffff;
+ }
  .user-info {
    margin-top: 9px;
  }
@@ -24,3 +28,5 @@
  .nav {
    margin-top: 5px;
  }
+
+ 
