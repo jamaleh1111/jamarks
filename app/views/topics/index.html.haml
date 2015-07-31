@@ -1,9 +1,0 @@
-%h1 Jamarks
-
-= link_to "New Topic", new_topic_path, class: 'btn btn-success'
-
-
-- @topics.each do |topic|
-  %p= link_to topic.title, topic
-
-  = link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger'
