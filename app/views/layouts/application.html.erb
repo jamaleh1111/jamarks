@@ -8,31 +8,25 @@
   <script src='//cdn.embedly.com/widgets/platform.js'></script>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Jamarks</a>
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Home", root_path  %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Topics", topics_path %></li>
+    <div class="pull-right user-info">
+      <% if current_user %>
+      Hello <%= link_to (current_user.name || current_user.email), user_path(current_user) %> !
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %> 
+            <span class="glyphicon glyphicon-log-out"></span>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %> 
+          <%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
       </div>
-      <div>
-        <ul class="nav navbar-nav">
-          <li role="presentation"><a href="#"><%= link_to "Home", root_path  %></a></li>
-          <li role="presentation"><a href="#"><%= link_to "About", about_path %></a></li>
-          <li role="presentation"><a href="#"><%= link_to "Topics", topics_path %></a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
+    </ul>
 
-          <li><a href="#">Hello <%= link_to (current_user.name || current_user.email), user_path(current_user) %>! </li></a>
-              <li><a href="#"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
-            <% else %>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span><%= link_to "Sign In", new_user_session_path %></a></li>
-              or 
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= link_to "Sign Up", new_user_registration_path %></a></li>
-            <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+  
    
 
     

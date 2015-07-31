@@ -2,17 +2,20 @@
 <h1>Jamarks</h1>
   <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
   
-  
-    <% @topics.each do |topic| %>
+    <div class="row">
+      <% @topics.each do |topic| %>
       <p><%= link_to topic.title, topic %></p>
-        <%= link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger' %>
-        <div class="row">
-        <% topic.bookmarks.each do |bookmark| %>
-          <div class="col-xs-6 col-md-3">
-            <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-          </div>
-        <% end %>
-    <% end %>
-  </div>
+        <%= link_to " ", topic_path(topic), method: :delete %><i class="glyphicon glyphicon-remove-sign"></i>
+    </div>
+
+    <div class="row">
+      <% topic.bookmarks.each do |bookmark| %>
+        <div class="col-xs-6 col-md-3">
+          <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
 </div>
 
