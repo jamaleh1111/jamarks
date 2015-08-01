@@ -1,39 +1,35 @@
-<h1>
-  <%= @user.name %>
-</h1>
-<!-- - if policy(Bookmark.new).create?
--->
-<!--   = link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success'
--->
-<h2>My Bookmarks</h2>
-  <p>
+<h1>My Bookmarks</h1>
+  <div class="row">
     <% @topics.each do |topic| %>
-      <%= topic.title %>
+      <h2><%= topic.title %></h2>
     <% end %>
-  </p>
-  <p>
-    <% @user_bookmarks.each do |bookmark| %>
-      <p>
-        <%= link_to bookmark.url, bookmark.url %>
-      </p>
-      <% if policy(bookmark).destroy? %>
-        <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
-      <% end %>
-    <% end %>
-  </p>
+    <div class="row">
+      <% @user_bookmarks.each do |bookmark| %>
+      <div class="col-xs-6 col-md-3">
+        <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>    
+          <% if policy(bookmark).destroy? %>
+            <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<h2>My Liked Bookmarks</h2>
-  <p>
+
+<h1>My Liked Bookmarks</h1>
+  <div class="row">
     <% @topics.each do |topic| %>
-      <%= topic.title %>
+      <h2><%= topic.title %></h2>
     <% end %>
-  </p>
-  <p>
+    <div class="row">
     <% @liked_bookmarks.each do |bookmark| %>
-      <p>
-        <%= link_to bookmark.url, bookmark.url %>
-      </p>
-      <%= render partial: 'likes/like', locals: {bookmark: bookmark } %>
+      <div class="col-xs-6 col-md-3">
+    <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+    <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+
+    </div>
     <% end %>
-  </p>
+  </div>
+</div>
 
