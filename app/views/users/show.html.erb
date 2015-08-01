@@ -1,35 +1,33 @@
-<h1>My Bookmarks</h1>
-  <div class="row">
-    <% @topics.each do |topic| %>
-      <h2><%= topic.title %></h2>
-    <% end %>
+<div class="container">
+  <h1>My Bookmarks</h1>
     <div class="row">
-      <% @user_bookmarks.each do |bookmark| %>
-      <div class="col-xs-6 col-md-3">
-        <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>    
-          <% if policy(bookmark).destroy? %>
-            <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
+      <% @topics.each do |topic| %>
+        <h2><%= topic.title %></h2>
+      <% end %>
+        <% @user_bookmarks.each do |bookmark| %>
+        <div class="col-xs-6 col-md-3">
+          <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>    
+            <% if policy(bookmark).destroy? %>
+              <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
+            <% end %>
           <% end %>
+        </div>
+    </div>
+
+
+  <h1>My Liked Bookmarks</h1>
+    <div class="row">
+      <% @topics.each do |topic| %>
+        <h2><%= topic.title %></h2>
+      <% end %>
+    </div>
+      <div class="col-xs-6 col-md-3">
+        <% @liked_bookmarks.each do |bookmark| %>
+          <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         <% end %>
       </div>
-    </div>
-  </div>
-
-
-<h1>My Liked Bookmarks</h1>
-  <div class="row">
-    <% @topics.each do |topic| %>
-      <h2><%= topic.title %></h2>
-    <% end %>
-    <div class="row">
-    <% @liked_bookmarks.each do |bookmark| %>
-      <div class="col-xs-6 col-md-3">
-    <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-    <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-
-    </div>
-    <% end %>
   </div>
 </div>
 
