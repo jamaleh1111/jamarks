@@ -4,6 +4,7 @@
       <% @topics.each do |topic| %>
         <h2><%= topic.title %></h2>
       <% end %>
+      <div class="row">
         <% @user_bookmarks.each do |bookmark| %>
         <div class="col-xs-6 col-md-3">
           <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
@@ -13,6 +14,7 @@
             <% end %>
           <% end %>
         </div>
+      </div>
     </div>
 
 
@@ -22,12 +24,14 @@
         <h2><%= topic.title %></h2>
       <% end %>
     </div>
+    <div class="row">
       <div class="col-xs-6 col-md-3">
         <% @liked_bookmarks.each do |bookmark| %>
           <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
           <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         <% end %>
       </div>
+    </div>
   </div>
 </div>
 
