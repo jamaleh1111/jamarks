@@ -41,6 +41,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
 
+    authorize @topic
     if @topic.destroy
       flash[:notice] = "Topic was deleted!"
     else

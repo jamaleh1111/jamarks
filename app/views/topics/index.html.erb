@@ -5,7 +5,9 @@
     <div class="row">
       <% @topics.each do |topic| %>
       <p><%= link_to topic.title, topic %></p>
+      <% if policy(topic).destroy? %>
         <%= link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger' %>
+      <% end %>
     </div>
 
     <div class="row">
