@@ -1,17 +1,23 @@
-<% if policy(Bookmark.new).create? %>
-  <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
-<% end %>
+<div class="container">
+<h1>Jamarks</h1>
+  
 
-<h1><%= @topic.title %></h1>
+  <h2><%= @topic.title %></h2>
+    <% if policy(Bookmark.new).create? %>
+      <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
+    <% end %>
+    <br>
 
-<% @topic.bookmarks.each do |bookmark| %>
-  <div class="col-xs-6 col-md-3">
-    <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-    <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+  <% @topic.bookmarks.each do |bookmark| %>
+    <div class="col-xs-6 col-md-3">
+      <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
+      <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
 
-  </div>
- 
-<% end %>
+    </div>
+   
+  <% end %>
+</br>
+</div>
 
 
     
