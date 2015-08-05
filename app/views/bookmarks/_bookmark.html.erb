@@ -1,0 +1,7 @@
+<div class="col-xs-6 col-md-3">
+  <%= link_to '', bookmark.url, class: 'embedly-card' %>
+  <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>    
+  <% if policy(bookmark).destroy? %>
+    <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+</div>

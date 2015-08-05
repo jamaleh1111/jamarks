@@ -1,0 +1,16 @@
+<%= content_tag_for :div, topic, class: 'row' do %>
+  <div>
+    <h3 class='text-center'>
+      <%= link_to topic.title, topic_path(topic) %>
+      <% if policy(topic).destroy? %>
+        <%= link_"Delete", topic, method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+    </h3>
+
+    <div class="container">
+      <div class="span12 text-center">
+        <%= render bookmarks %>
+      </div>
+    </div>
+  </div>
+<% end %>

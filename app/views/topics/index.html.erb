@@ -4,20 +4,10 @@
   
     <div class="row">
       <% @topics.each do |topic| %>
-      <h2><%= link_to topic.title, topic %></h2>
-      <% if policy(topic).destroy? %>
-        <%= link_to "Delete Topic", topic_path(topic), method: :delete, class: 'btn btn-danger' %>
+        <%= render partial: 'users/topic', locals: {topic: topic, bookmarks: topic.bookmarks} %>
       <% end %>
     </div>
 
-    <div class="row">
-      <% topic.bookmarks.each do |bookmark| %>
-        <div class="col-xs-6 col-md-3">
-          <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-        </div>
-      <% end %>
-      <% end %>
-    </div>
+
 </div>
 

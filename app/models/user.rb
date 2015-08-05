@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
   def liked_bookmarks
     Bookmark.find(likes.each {|l| l.bookmark_id})
   end
+
+  def user_bookmarks
+    bookmarks.includes(:topic)
+  end
+
+  def liked_bookmarks
+    likes.includes(bookmark: :topic).map(&:bookmark)
+  end
 end

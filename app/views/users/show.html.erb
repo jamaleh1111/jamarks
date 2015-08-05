@@ -1,37 +1,17 @@
 <div class="container">
   <h1>My Bookmarks</h1>
-    <div class="row">
-      <% @topics.each do |topic| %>
-        <h2><%= topic.title %></h2>
-    </div>
-    <div class="row">
-      <% @user_bookmarks.each do |bookmark| %>
-      <div class="col-xs-6 col-md-3">
-        <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>    
-          <% if policy(bookmark).destroy? %>
-            <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger' %>
-          </div>
-          <% end %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
 
-
-  <h1>My Liked Bookmarks</h1>
-    <div class="row">
-      <% @topics.each do |topic| %>
-        <h2><%= topic.title %></h2>
+      <% @user_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>     
+        <%= render partial: 'users/topic', locals: {topic: topic, bookmarks: bookmarks} %>
       <% end %>
-    </div>
-    <div class="row">
-      <% @liked_bookmarks.each do |bookmark| %>
-        <div class="col-xs-6 col-md-3">
-          <a class="embedly-card" href=<%= bookmark.url %> data-card-theme="light"></a>
-          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-        <% end %>
-      </div>
-    </div>
+
+  <h1>Liked Bookmarks</h1>
+
+    <% @liked_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>     
+      <%= render partial: 'users/topic', locals: {topic: topic, bookmarks: bookmarks} %>
+    <% end %>
+
+
+
 </div>
 
