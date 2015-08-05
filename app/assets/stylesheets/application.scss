@@ -22,6 +22,7 @@
    background: #d6ffff;
    font-family: 'Poiret One', cursive;
    text-align: center;
+   
  }
  div {
    content: center;
@@ -32,10 +33,18 @@
    font-weight: bold;
  }
  #intro {
-   font-size: 32px;
+   font-size: 30px;
+ }
+ #image {
+ background-image: image-url('tablet2.jpg');
+ background-repeat: no-repeat;
+ background-size: 100%;
+ }
+ .container {
  }
 
- .container {
+ #home-page {
+   margin-top: 150px;
  }
  .user-info {
    margin-top: 9px;
