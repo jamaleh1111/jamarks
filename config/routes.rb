@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:update, :show]
 
   resources :topics do 
     resources :bookmarks, except: [:index]
