@@ -3,7 +3,7 @@
     <h3 class='text-center'>
       <%= link_to topic.title, topic_path(topic) %>
       <% if policy(topic).destroy? %>
-        <%= link_"Delete", topic, method: :delete, class: 'btn btn-danger' %>
+        <%= link_to "Delete", topic, method: :delete, class: 'btn btn-danger' %>
       <% end %>
     </h3>
 
